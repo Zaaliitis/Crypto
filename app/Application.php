@@ -14,6 +14,7 @@ class Application
     function run()
     {
         while (true) {
+            echo "-----------------------------------" . PHP_EOL;
             echo "Welcome to my Crypto Currency app! \n";
             echo "Enter a number to perform an action! \n";
             echo "Choose 0 for EXIT\n";
@@ -21,6 +22,7 @@ class Application
             echo "Choose 2 to find a crypto currency by symbol\n";
             echo "Choose 3 to enter crypto currency calculator\n";
             echo "Choose 4 to convert crypto to another currency\n";
+            echo "-----------------------------------" . PHP_EOL;
 
             $command = (int)readline();
 
