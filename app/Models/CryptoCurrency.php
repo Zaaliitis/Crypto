@@ -6,7 +6,7 @@ class CryptoCurrency //immutable Class
 {
     private string $name;
     private string $symbol;
-    private string $date;
+    private string $marketCap;
     private int $rank;
     private string $price;
     private string $change24h;
@@ -18,7 +18,7 @@ class CryptoCurrency //immutable Class
     (
     string $name,
     string $symbol,
-    string $date,
+    string $marketCap,
     int $rank,
     string $price,
     string $change24h,
@@ -29,7 +29,7 @@ class CryptoCurrency //immutable Class
 {
     $this->name = $name;
     $this->symbol = $symbol;
-    $this->date = $date;
+    $this->marketCap = $marketCap;
     $this->rank = $rank;
     $this->price = $price;
     $this->change24h = $change24h;
@@ -64,12 +64,16 @@ class CryptoCurrency //immutable Class
         return number_format($this->change90d, 2) . "%";
     }
 
-    public function getDate(): string
+    public function getMarketCap(): string
     {
-        return date_format(date_create($this->date), 'd-m-Y');
+        return number_format($this->marketCap, 2,  '.', ',') . "$";
     }
 
     public function getPrice(): string
+    {
+        return $this->price;
+    }
+    public function getFormattedPrice(): string
     {
         return number_format($this->price, 2) . "$";
     }
