@@ -47,11 +47,16 @@ class Application
     }
     private  function list(): void
     {
+
         $input = (int)readline("Enter the number of cryptocurrencies you want to see: ");
-        $cryptoCurrencies = $this->apiClient->getTop($input);
-        echo "-_- TOP $input Crypto Currencies by market cap! -_-" . PHP_EOL;
-        foreach ($cryptoCurrencies as $cryptoCurrency) {
-            $this->formatOutput($cryptoCurrency);
+        if ($input !== 0) {
+            $cryptoCurrencies = $this->apiClient->getTop($input);
+            echo "-_- TOP $input Crypto Currencies by market cap! -_-" . PHP_EOL;
+            foreach ($cryptoCurrencies as $cryptoCurrency) {
+                $this->formatOutput($cryptoCurrency);
+            }
+        } else {
+            echo "Invalid input, try numbers!" . PHP_EOL;
         }
 
     }
@@ -109,6 +114,4 @@ class Application
         echo "--- Market cap: {$cryptoCurrency->getMarketCap()} ---" . PHP_EOL;
         echo PHP_EOL;
     }
-
-
 }

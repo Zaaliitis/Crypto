@@ -38,10 +38,6 @@ ApiClient
         return json_decode($response->getBody());
 
     }
-    public function changeCurrency(string $currency): CryptoCurrency
-    {
-        return $this->getData(5000, $currency);
-    }
     public function getCryptoCurrencyBySymbol(string $symbol): CryptoCurrency
     {
         $cryptoData = $this->getData(5000, "USD");
