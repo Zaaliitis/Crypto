@@ -5,8 +5,6 @@ use App\Models\CryptoCurrency;
 class Application
 {
     private ApiClient $apiClient;
-    private CryptoCurrency $cryptoCurrency;
-
     public function __construct( ApiClient $apiClient)
     {
                 $this->apiClient = $apiClient;
@@ -49,7 +47,7 @@ class Application
     }
     private  function list(): void
     {
-        $input = readline("Enter the number of cryptocurrencies you want to see: ");
+        $input = (int)readline("Enter the number of cryptocurrencies you want to see: ");
         $cryptoCurrencies = $this->apiClient->getTop($input);
         echo "-_- TOP $input Crypto Currencies by market cap! -_-" . PHP_EOL;
         foreach ($cryptoCurrencies as $cryptoCurrency) {
@@ -67,7 +65,7 @@ class Application
     {
         /** @var CryptoCurrency $cryptoCurrency */
         $crypto = readline("Enter symbol of crypto currency: ");
-        $amount = readline("Enter amount of cryptocurrency: ");
+        $amount = (int)readline("Enter amount of cryptocurrency: ");
 //
         $cryptoCurrency = $this->apiClient->getCryptoCurrencyBySymbol($crypto);
         $price = $cryptoCurrency->getPrice();
